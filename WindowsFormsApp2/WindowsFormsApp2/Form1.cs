@@ -1,0 +1,269 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace WindowsFormsApp2
+{
+    public partial class Form1 : Form
+    {
+        bool goup;
+        bool godown;
+        bool goleft;
+        bool goright;
+
+        int speed = 5;
+
+        int ghost1 = 8;
+        int ghost2 = 8;
+
+        int ghost3x = 8;
+        int ghost3y = 8;
+
+        int score = 0;
+
+
+        public Form1()
+        {
+            InitializeComponent();
+            label2.Visible = false;
+        }
+
+        private void Form1_KeyDown(object sender, KeyEventArgs e)
+        {
+
+            if(e.KeyCode==Keys.Left)
+            {
+                goleft = true;
+                goright = false;
+                goup = false;
+                godown = false;
+                pacman.Image = Properties.Resources.Right;
+                
+            }
+
+            if(e.KeyCode==Keys.Right)
+            {
+                goright = true;
+
+                goleft= false;
+                goup = false;
+                godown = false;
+                pacman.Image = Properties.Resources.Left;
+            }
+
+            if (e.KeyCode == Keys.Up)
+            {
+                goup = true;
+                goleft = false;
+                goright = false;
+                godown = false;
+                pacman.Image = Properties.Resources.Up;
+            }
+
+            if (e.KeyCode == Keys.Down)
+            {
+                godown = true;
+                goleft = false;
+                goright = false;
+                goup = false;
+                pacman.Image = Properties.Resources.down;
+            }
+        }
+
+       /* private void Form1_KeyUp(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode== Keys.Left)
+            {
+                goleft = false;
+            }
+
+            if (e.KeyCode == Keys.Right)
+            {
+                goright = false;
+            }
+
+            if (e.KeyCode == Keys.Up)
+            {
+                goup = false;
+            }
+
+            if (e.KeyCode == Keys.Down)
+            {
+                godown = false;
+            }
+        }
+        */
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            //Para reaparecer por los bordes
+
+            if(pacman.Right > ClientSize.Width)
+            {
+                pacman.Left = 0;
+            }
+
+
+            if (pacman.Right <= 0)
+            {
+                pacman.Left = ClientSize.Width-pacman.Bounds.Width;
+            }
+
+            if (pacman.Bottom <0)
+            {
+                pacman.Top = ClientSize.Height - pacman.Height;
+            }
+
+            if(pacman.Top>ClientSize.Height)
+            {
+                pacman.Top = 0;
+            }
+
+            if (pinkGhost.Right > ClientSize.Width)
+            {
+                pinkGhost.Left = 0;
+            }
+
+
+            if (pinkGhost.Right <= 0)
+            {
+                pinkGhost.Left = ClientSize.Width - pinkGhost.Bounds.Width;
+            }
+
+
+            if (redGhost.Right > ClientSize.Width)
+            {
+                redGhost.Left = 0;
+            }
+
+
+            if (redGhost.Right <= 0)
+            {
+                redGhost.Left = ClientSize.Width - redGhost.Bounds.Width;
+            }
+
+
+            if (yellowGhost.Right > ClientSize.Width)
+            {
+                yellowGhost.Left = 0;
+            }
+
+
+            if (yellowGhost.Right <= 0)
+            {
+                yellowGhost.Left = ClientSize.Width - yellowGhost.Bounds.Width;
+            }
+
+
+
+            //PUNTAJE
+
+            label1.Text = "Score: " + score;
+
+
+            //CONTROL PACMAN
+
+            if(goleft)
+            {
+                pacman.Left -= speed;
+            }
+
+            if (goright)
+            {
+                pacman.Left += speed;
+            }
+
+            if (goup)
+            {
+                pacman.Top -= speed;
+            }
+
+            if (godown)
+            {
+                pacman.Top += speed;
+            }
+
+            redGhost.Left += ghost1;
+            yellowGhost.Left += ghost2;
+
+            if(redGhost.Bounds.IntersectsWith(pictureBox1.Bounds) || 
+                redGhost.Bounds.IntersectsWith(pictureBox4.Bounds) ||
+                redGhost.Bounds.IntersectsWith(pictureBox5.Bounds) ||
+                redGhost.Bounds.IntersectsWith(pictureBox6.Bounds)
+                )
+            {
+                ghost1 = -ghost1;
+            }
+
+            if (yellowGhost.Bounds.IntersectsWith(pictureBox1.Bounds) ||
+                yellowGhost.Bounds.IntersectsWith(pictureBox4.Bounds) ||
+                yellowGhost.Bounds.IntersectsWith(pictureBox5.Bounds) ||
+                yellowGhost.Bounds.IntersectsWith(pictureBox6.Bounds)
+                )
+            {
+                ghost2 = -ghost2;
+            }
+
+            foreach (Control x in this.Controls)
+            {
+                //MUERTE POR FANTASMA
+
+                if(x is PictureBox && x.Tag == "ghost")
+                {
+                    /*if (((PictureBox)x).Bounds.IntersectsWith(pacman.Bounds))
+                        {
+                        pacman.Left = 0;
+                        pacman.Top = 25;
+                        label2.Text = "Game Over";
+                        label2.Visible = true;
+                        timer1.Stop();
+                    }
+                    */
+                    
+
+                }
+
+                if(x is PictureBox && x.Tag =="coin")
+                {
+                    if (((PictureBox)x).Bounds.IntersectsWith(pacman.Bounds))
+                    {
+                        this.Controls.Remove(x);
+                        score++;
+
+                    }
+
+                }
+                
+            }
+
+            pinkGhost.Left += ghost3x;
+            pinkGhost.Top += ghost3y;
+
+            if(pinkGhost.Left<1 ||
+                pinkGhost.Left + pinkGhost.Width > ClientSize.Width -2 ||
+                pinkGhost.Bounds.IntersectsWith(pictureBox1.Bounds) ||
+                pinkGhost.Bounds.IntersectsWith(pictureBox4.Bounds) ||
+                pinkGhost.Bounds.IntersectsWith(pictureBox5.Bounds) ||
+                pinkGhost.Bounds.IntersectsWith(pictureBox6.Bounds) 
+                )
+            {
+                ghost3x = -ghost3x;
+            }
+
+            if(pinkGhost.Top < 1 ||
+                pinkGhost.Top +pinkGhost.Height > ClientSize.Height -2
+                )
+            {
+                ghost3x = -ghost3x;
+            }
+        }
+
+       
+    }
+}
