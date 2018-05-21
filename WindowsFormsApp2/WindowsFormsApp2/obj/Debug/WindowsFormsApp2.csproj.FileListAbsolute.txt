@@ -18,3 +18,13 @@ C:\Users\diego\Documents\GitHub\pacman\pacman\WindowsFormsApp2\WindowsFormsApp2\
 C:\Users\diego\Documents\GitHub\pacman\pacman\WindowsFormsApp2\WindowsFormsApp2\obj\Debug\WindowsFormsApp2.csproj.CoreCompileInputs.cache
 C:\Users\diego\Documents\GitHub\pacman\pacman\WindowsFormsApp2\WindowsFormsApp2\obj\Debug\WindowsFormsApp2.exe
 C:\Users\diego\Documents\GitHub\pacman\pacman\WindowsFormsApp2\WindowsFormsApp2\obj\Debug\WindowsFormsApp2.pdb
+C:\Users\ASUSTek\Documents\GitHub\pacman\WindowsFormsApp2\WindowsFormsApp2\bin\Debug\WindowsFormsApp2.exe.config
+C:\Users\ASUSTek\Documents\GitHub\pacman\WindowsFormsApp2\WindowsFormsApp2\bin\Debug\WindowsFormsApp2.exe
+C:\Users\ASUSTek\Documents\GitHub\pacman\WindowsFormsApp2\WindowsFormsApp2\bin\Debug\WindowsFormsApp2.pdb
+C:\Users\ASUSTek\Documents\GitHub\pacman\WindowsFormsApp2\WindowsFormsApp2\obj\Debug\WindowsFormsApp2.csprojAssemblyReference.cache
+C:\Users\ASUSTek\Documents\GitHub\pacman\WindowsFormsApp2\WindowsFormsApp2\obj\Debug\WindowsFormsApp2.Form1.resources
+C:\Users\ASUSTek\Documents\GitHub\pacman\WindowsFormsApp2\WindowsFormsApp2\obj\Debug\WindowsFormsApp2.Properties.Resources.resources
+C:\Users\ASUSTek\Documents\GitHub\pacman\WindowsFormsApp2\WindowsFormsApp2\obj\Debug\WindowsFormsApp2.csproj.GenerateResource.cache
+C:\Users\ASUSTek\Documents\GitHub\pacman\WindowsFormsApp2\WindowsFormsApp2\obj\Debug\WindowsFormsApp2.csproj.CoreCompileInputs.cache
+C:\Users\ASUSTek\Documents\GitHub\pacman\WindowsFormsApp2\WindowsFormsApp2\obj\Debug\WindowsFormsApp2.exe
+C:\Users\ASUSTek\Documents\GitHub\pacman\WindowsFormsApp2\WindowsFormsApp2\obj\Debug\WindowsFormsApp2.pdb
