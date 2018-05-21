@@ -125,6 +125,16 @@ namespace WindowsFormsApp2
                 pacman.Top = 0;
             }
 
+            if (pinkGhost.Bottom < 0)
+            {
+                pinkGhost.Top = ClientSize.Height - pinkGhost.Height;
+            }
+
+            if (pinkGhost.Top > ClientSize.Height)
+            {
+                pinkGhost.Top = 0;
+            }
+
             if (pinkGhost.Right > ClientSize.Width)
             {
                 pinkGhost.Left = 0;
