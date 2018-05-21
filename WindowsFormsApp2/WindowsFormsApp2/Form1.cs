@@ -16,7 +16,7 @@ namespace WindowsFormsApp2
         bool godown;
         bool goleft;
         bool goright;
-
+        private bool parado;
         int speed = 5;
 
         int ghost1 = 8;
@@ -179,6 +179,14 @@ namespace WindowsFormsApp2
 
             //CONTROL PACMAN
 
+            colisionpac.Left = pacman.Left - 10;
+            colisionpac.Top = pacman.Top - 10;
+
+            if (goleft || goup || godown || goright)
+            { parado = false;
+              
+            }
+
             if(goleft)
             {
                 pacman.Left -= speed;
@@ -198,6 +206,44 @@ namespace WindowsFormsApp2
             {
                 pacman.Top += speed;
             }
+
+            foreach (Control x in Controls)
+                if (x is PictureBox)
+                {
+                    if (pacman.Bounds.IntersectsWith(x.Bounds)
+                        && (x.Tag == "wallhor" || x.Tag == "wallvert") && !parado)
+                    {
+                        parado = true;
+                        if (goright && pacman.Right>=(x.Left))
+                        {
+                            pacman.Left = x.Left - pacman.Width ;
+                            goright = false;
+                        }
+
+                        if (goleft && pacman.Left <= (x.Right))
+                        {
+                            pacman.Left = x.Left + pacman.Width;
+                            goleft = false;
+                        }
+
+                        if(goup && pacman.Top <=x.Bottom)
+                        {
+                            pacman.Top = x.Top + pacman.Height;
+                        }
+
+                        if (godown && pacman.Bottom >= x.Top)
+                        {
+                            pacman.Top = x.Top - pacman.Height;
+                        }
+
+
+
+
+
+
+
+                    }
+                }
 
             redGhost.Left += ghost1;
             yellowGhost.Left += ghost2;

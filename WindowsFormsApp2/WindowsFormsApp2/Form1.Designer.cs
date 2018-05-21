@@ -78,6 +78,7 @@
             this.pictureBox39 = new System.Windows.Forms.PictureBox();
             this.pictureBox40 = new System.Windows.Forms.PictureBox();
             this.pictureBox41 = new System.Windows.Forms.PictureBox();
+            this.colisionpac = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pacman)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pinkGhost)).BeginInit();
@@ -123,6 +124,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox39)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox40)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox41)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.colisionpac)).BeginInit();
             this.SuspendLayout();
             // 
             // pictureBox1
@@ -138,7 +140,7 @@
             // pacman
             // 
             this.pacman.Image = global::WindowsFormsApp2.Properties.Resources.Left;
-            this.pacman.Location = new System.Drawing.Point(301, 307);
+            this.pacman.Location = new System.Drawing.Point(311, 307);
             this.pacman.Name = "pacman";
             this.pacman.Size = new System.Drawing.Size(40, 40);
             this.pacman.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -637,6 +639,15 @@
             this.pictureBox41.TabStop = false;
             this.pictureBox41.Tag = "wallhor";
             // 
+            // colisionpac
+            // 
+            this.colisionpac.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.colisionpac.Location = new System.Drawing.Point(301, 299);
+            this.colisionpac.Name = "colisionpac";
+            this.colisionpac.Size = new System.Drawing.Size(60, 60);
+            this.colisionpac.TabIndex = 47;
+            this.colisionpac.TabStop = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -689,10 +700,10 @@
             this.Controls.Add(this.pinkGhost);
             this.Controls.Add(this.pacman);
             this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.colisionpac);
             this.Name = "Form1";
             this.Text = "Form1";
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
-    //        this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyUp);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pacman)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pinkGhost)).EndInit();
@@ -738,6 +749,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox39)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox40)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox41)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.colisionpac)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -793,6 +805,7 @@
         private System.Windows.Forms.PictureBox pictureBox39;
         private System.Windows.Forms.PictureBox pictureBox40;
         private System.Windows.Forms.PictureBox pictureBox41;
+        private System.Windows.Forms.PictureBox colisionpac;
     }
 }
 
