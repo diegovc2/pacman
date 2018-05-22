@@ -12,6 +12,7 @@ namespace WindowsFormsApp2
 {
     public partial class Form1 : Form
     {
+        int timer=0;    
         bool goup;
         bool godown;
         bool goleft;
@@ -19,15 +20,14 @@ namespace WindowsFormsApp2
         private bool parado;
         int speed = 5;
 
-        int ghost1 = 8;
+        int ghost1=6;
         int ghost2 = 8;
 
         int ghost3x = 8;
         int ghost3y = 8;
 
         int score = 0;
-
-
+        private bool azul;
 
         public Form1()
         {
@@ -38,21 +38,21 @@ namespace WindowsFormsApp2
         private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
 
-            if(e.KeyCode==Keys.Left)
+            if (e.KeyCode == Keys.Left)
             {
                 goleft = true;
                 goright = false;
                 goup = false;
                 godown = false;
                 pacman.Image = Properties.Resources.Right;
-                
+
             }
 
-            if(e.KeyCode==Keys.Right)
+            if (e.KeyCode == Keys.Right)
             {
                 goright = true;
 
-                goleft= false;
+                goleft = false;
                 goup = false;
                 godown = false;
                 pacman.Image = Properties.Resources.Left;
@@ -76,6 +76,8 @@ namespace WindowsFormsApp2
                 pacman.Image = Properties.Resources.down;
             }
         }
+
+
 
        /* private void Form1_KeyUp(object sender, KeyEventArgs e)
         {
@@ -101,8 +103,33 @@ namespace WindowsFormsApp2
         }
         */
 
+            //POWERPELLET
+
+            
         private void timer1_Tick(object sender, EventArgs e)
         {
+            if(azul)
+                {
+                timer ++;
+                label1.Text= timer.ToString();
+                if(timer>=100)
+                    {
+                    foreach(Control c in Controls)
+                        {
+                          if(c is PictureBox && c.Tag=="ghost")
+                            {
+                            PictureBox p = c as PictureBox;
+                           // p.Image=WindowsFormsApp2.Properties.Resources.
+}
+
+}
+
+}
+
+                
+                 }
+
+
             //Para reaparecer por los bordes
 
             if(pacman.Right > ClientSize.Width)
@@ -175,7 +202,7 @@ namespace WindowsFormsApp2
 
             //PUNTAJE
 
-            label1.Text = "Score: " + score;
+           // label1.Text = "Score: " + score;
 
 
             //CONTROL PACMAN
@@ -275,6 +302,7 @@ namespace WindowsFormsApp2
             {
                 //MUERTE POR FANTASMA
 
+
                 if(x is PictureBox && x.Tag == "ghost")
                 {
                     /*if (((PictureBox)x).Bounds.IntersectsWith(pacman.Bounds))
@@ -303,12 +331,14 @@ namespace WindowsFormsApp2
 
                 }
                 
+                //CHEQUEAR POWERPELLET
                 if(x is PictureBox && x.Tag=="monGrande")
                 {
                     if (((PictureBox)x).Bounds.IntersectsWith(pacman.Bounds))
                     {
                         this.Controls.Remove(x);
                         score++;
+                        azul = true;
 
                         foreach (Control c in Controls)
                         {
@@ -325,6 +355,7 @@ namespace WindowsFormsApp2
                             }
                         }
 
+                        
                     }
 
                 }

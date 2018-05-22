@@ -636,7 +636,7 @@
             // pinkGhost
             // 
             this.pinkGhost.Image = global::WindowsFormsApp2.Properties.Resources.pink_guy;
-            this.pinkGhost.Location = new System.Drawing.Point(139, 151);
+            this.pinkGhost.Location = new System.Drawing.Point(149, 151);
             this.pinkGhost.Name = "pinkGhost";
             this.pinkGhost.Size = new System.Drawing.Size(36, 38);
             this.pinkGhost.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
