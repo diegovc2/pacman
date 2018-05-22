@@ -28,6 +28,7 @@ namespace WindowsFormsApp2
         int score = 0;
 
 
+
         public Form1()
         {
             InitializeComponent();
@@ -245,6 +246,10 @@ namespace WindowsFormsApp2
                     }
                 }
 
+            //Moneda Grande
+            
+            
+
             redGhost.Left += ghost1;
             yellowGhost.Left += ghost2;
 
@@ -285,6 +290,8 @@ namespace WindowsFormsApp2
 
                 }
 
+                //Recogida Monedas
+
                 if(x is PictureBox && x.Tag =="coin")
                 {
                     if (((PictureBox)x).Bounds.IntersectsWith(pacman.Bounds))
@@ -295,6 +302,35 @@ namespace WindowsFormsApp2
                     }
 
                 }
+                
+                if(x is PictureBox && x.Tag=="monGrande")
+                {
+                    if (((PictureBox)x).Bounds.IntersectsWith(pacman.Bounds))
+                    {
+                        this.Controls.Remove(x);
+                        score++;
+
+                        foreach (Control c in Controls)
+                        {
+                            if (c is PictureBox)
+                            {
+                               
+
+                                PictureBox o = c as PictureBox;
+                                if (c.Tag == "ghost")
+                                {
+                                    
+                                    o.Image = WindowsFormsApp2.Properties.Resources.fantasma;
+                                }
+                            }
+                        }
+
+                    }
+
+                }
+               
+
+               
                 
             }
 
