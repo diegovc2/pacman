@@ -26,6 +26,7 @@ namespace WindowsFormsApp2
         int ghost3y = 8;
 
         int score = 0;
+        int lives = 3;
 
 
         public Form1()
@@ -76,29 +77,44 @@ namespace WindowsFormsApp2
             }
         }
 
-       /* private void Form1_KeyUp(object sender, KeyEventArgs e)
+        /* private void Form1_KeyUp(object sender, KeyEventArgs e)
+         {
+             if(e.KeyCode== Keys.Left)
+             {
+                 goleft = false;
+             }
+
+             if (e.KeyCode == Keys.Right)
+             {
+                 goright = false;
+             }
+
+             if (e.KeyCode == Keys.Up)
+             {
+                 goup = false;
+             }
+
+             if (e.KeyCode == Keys.Down)
+             {
+                 godown = false;
+             }
+         }
+         */
+
+            //Método para NUEVO JUEGO
+
+
+        private void resetall()
         {
-            if(e.KeyCode== Keys.Left)
-            {
-                goleft = false;
-            }
 
-            if (e.KeyCode == Keys.Right)
-            {
-                goright = false;
-            }
 
-            if (e.KeyCode == Keys.Up)
-            {
-                goup = false;
-            }
+            pacman.SetBounds(pacman.Left, pacman.Top, 22, 22);
 
-            if (e.KeyCode == Keys.Down)
-            {
-                godown = false;
-            }
+
+       
+            timer1.Enabled = false;
+
         }
-        */
 
         private void timer1_Tick(object sender, EventArgs e)
         {
@@ -123,6 +139,16 @@ namespace WindowsFormsApp2
             if(pacman.Top>ClientSize.Height)
             {
                 pacman.Top = 0;
+            }
+
+            if (pinkGhost.Bottom < 0)
+            {
+                pinkGhost.Top = ClientSize.Height - pinkGhost.Height;
+            }
+
+            if (pinkGhost.Top > ClientSize.Height)
+            {
+                pinkGhost.Top = 0;
             }
 
             if (pinkGhost.Right > ClientSize.Width)
@@ -213,35 +239,44 @@ namespace WindowsFormsApp2
             foreach (Control x in this.Controls)
             {
                 //MUERTE POR FANTASMA
-
+                
                 if(x is PictureBox && x.Tag == "ghost")
                 {
-                    /*if (((PictureBox)x).Bounds.IntersectsWith(pacman.Bounds))
+                   if (((PictureBox)x).Bounds.IntersectsWith(pacman.Bounds))
                         {
                         pacman.Left = 0;
                         pacman.Top = 25;
                         label2.Text = "Game Over";
                         label2.Visible = true;
                         timer1.Stop();
+                        lives--;
                     }
-                    */
                     
-
+                 
+                  
                 }
+                
 
-                if(x is PictureBox && x.Tag =="coin")
+                //Vidas
+
+                label3.Text = "Vidas: " + lives;
+                
+                //Puntaje
+
+
+                if (x is PictureBox && x.Tag =="coin")
                 {
                     if (((PictureBox)x).Bounds.IntersectsWith(pacman.Bounds))
                     {
                         this.Controls.Remove(x);
-                        score++;
+                        score = score + 10 ;
 
                     }
 
                 }
                 
             }
-
+            
             pinkGhost.Left += ghost3x;
             pinkGhost.Top += ghost3y;
 
@@ -260,10 +295,19 @@ namespace WindowsFormsApp2
                 pinkGhost.Top +pinkGhost.Height > ClientSize.Height -2
                 )
             {
-                ghost3x = -ghost3x;
+                ghost3y = -ghost3y;
             }
         }
 
-       
+        private void nuevoJuegoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            
+            // Método para resetear el juego, **** Falta hacerlo bien *****
+        }
+        //Método para salir del juego.
+        private void salirToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }
