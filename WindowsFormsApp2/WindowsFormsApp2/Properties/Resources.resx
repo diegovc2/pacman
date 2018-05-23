@@ -121,8 +121,8 @@
   <data name="yellow_guy" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\yellow_guy.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Right" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Right.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="ezgif-5-55e31f897e" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ezgif-5-55e31f897e.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="coint2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\coint2.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -132,6 +132,9 @@
   </data>
   <data name="Up" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Up.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="fantasma" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\fantasma.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="cccc" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\cccc.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -148,7 +151,10 @@
   <data name="pink_guy" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\pink_guy.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="fantasma" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\fantasma.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Right" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Right.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Pacman-light-blue-inky.sh-600x600" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Pacman-light-blue-inky.sh-600x600.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

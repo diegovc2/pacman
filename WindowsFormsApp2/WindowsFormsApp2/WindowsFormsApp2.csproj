@@ -112,5 +112,11 @@
   <ItemGroup>
     <None Include="Resources\fantasma.jpg" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ezgif-5-55e31f897e.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Pacman-light-blue-inky.sh-600x600.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

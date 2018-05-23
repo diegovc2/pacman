@@ -103,6 +103,16 @@ namespace WindowsFormsApp2.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap ezgif_5_55e31f897e {
+            get {
+                object obj = ResourceManager.GetObject("ezgif-5-55e31f897e", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap fantasma {
             get {
                 object obj = ResourceManager.GetObject("fantasma", resourceCulture);
@@ -116,6 +126,16 @@ namespace WindowsFormsApp2.Properties {
         internal static System.Drawing.Bitmap Left {
             get {
                 object obj = ResourceManager.GetObject("Left", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Pacman_light_blue_inky_sh_600x600 {
+            get {
+                object obj = ResourceManager.GetObject("Pacman-light-blue-inky.sh-600x600", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
