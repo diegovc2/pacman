@@ -492,6 +492,16 @@ namespace WindowsFormsApp2
             }
         }
 
+        private void volverAlMenuPrincipalToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Application.Restart();
+        }
 
+        private void salirDelJuegoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+       
     }
 }
