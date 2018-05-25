@@ -12,21 +12,6 @@ namespace WindowsFormsApp2
 {
     public partial class Form1 : Form
     {
-        bool goup;
-        bool godown;
-        bool goleft;
-        bool goright;
-
-        int speed = 5;
-
-        int ghost1 = 8;
-        int ghost2 = 8;
-
-        int ghost3x = 8;
-        int ghost3y = 8;
-
-        int score = 0;
-        int lives = 3;
 
 
         public Form1()
@@ -35,24 +20,43 @@ namespace WindowsFormsApp2
             label2.Visible = false;
         }
 
+        int timer = 0;
+        bool goup;
+        bool godown;
+        bool goleft;
+        bool goright;
+        private bool parado;
+        int speed = 5;
+
+        int ghost1 = 6;
+        int ghost2 = 8;
+
+        int ghost3x = 8;
+        int ghost3y = 8;
+
+        int score = 0;
+        private bool azul;
+        private int combo;
+        private bool ojos=true;
+
         private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
 
-            if(e.KeyCode==Keys.Left)
+            if (e.KeyCode == Keys.Left)
             {
                 goleft = true;
                 goright = false;
                 goup = false;
                 godown = false;
                 pacman.Image = Properties.Resources.Right;
-                
+
             }
 
-            if(e.KeyCode==Keys.Right)
+            if (e.KeyCode == Keys.Right)
             {
                 goright = true;
 
-                goleft= false;
+                goleft = false;
                 goup = false;
                 godown = false;
                 pacman.Image = Properties.Resources.Left;
@@ -76,6 +80,8 @@ namespace WindowsFormsApp2
                 pacman.Image = Properties.Resources.down;
             }
         }
+
+
 
         /* private void Form1_KeyUp(object sender, KeyEventArgs e)
          {
@@ -101,26 +107,70 @@ namespace WindowsFormsApp2
          }
          */
 
-            //Método para NUEVO JUEGO
 
 
-        private void resetall()
+        private async void timer1_TickAsync(object sender, EventArgs e)
         {
+            //LEYES FANTASMAS AZULES
+            if (azul)
+            {
+                timer++;
+                label1.Text = timer.ToString();
+                if (timer == 100)
+                {
+                    foreach (Control c in Controls)
+                    {
+                        //CAMBIA A FLASH
+                        if (c is PictureBox && c.Tag == "ghost")
+                        {
+                            PictureBox p = c as PictureBox;
+                            p.Image = WindowsFormsApp2.Properties.Resources.ezgif_5_55e31f897e;
+                        }
+
+                    }
+
+                }
+                //CAMBIA A NORMAL
+                if(timer>=250)
+                {
+                    foreach (Control c in Controls)
+                    {
+                        if (c is PictureBox && c.Tag == "ghost")
+                        {
+                            PictureBox p = c as PictureBox;
+                            if (p.Name=="pinkGhost")
+                            {
+                                p.Image= WindowsFormsApp2.Properties.Resources.pink_guy;
+                            }
+                            if (p.Name == "redGhost")
+                            {
+                                p.Image = WindowsFormsApp2.Properties.Resources.red_guy;
+                            }
+                            if (p.Name == "yellowGhost")
+                            {
+                                p.Image = WindowsFormsApp2.Properties.Resources.yellow_guy;
+                            }
+                            if (p.Name == "blueGhost")
+                            {
+                                p.Image = WindowsFormsApp2.Properties.Resources.Pacman_light_blue_inky_sh_600x600;
+                            }
+                        }
+
+                    }
+                    timer = 0;
+                    combo = 0;
+                    azul = false;
+                }
+
+                
 
 
-            pacman.SetBounds(pacman.Left, pacman.Top, 22, 22);
+            }
 
 
-       
-            timer1.Enabled = false;
-
-        }
-
-        private void timer1_Tick(object sender, EventArgs e)
-        {
             //Para reaparecer por los bordes
 
-            if(pacman.Right > ClientSize.Width)
+            if (pacman.Right > ClientSize.Width)
             {
                 pacman.Left = 0;
             }
@@ -128,15 +178,15 @@ namespace WindowsFormsApp2
 
             if (pacman.Right <= 0)
             {
-                pacman.Left = ClientSize.Width-pacman.Bounds.Width;
+                pacman.Left = ClientSize.Width - pacman.Bounds.Width;
             }
 
-            if (pacman.Bottom <0)
+            if (pacman.Bottom < 0)
             {
                 pacman.Top = ClientSize.Height - pacman.Height;
             }
 
-            if(pacman.Top>ClientSize.Height)
+            if (pacman.Top > ClientSize.Height)
             {
                 pacman.Top = 0;
             }
@@ -186,16 +236,36 @@ namespace WindowsFormsApp2
                 yellowGhost.Left = ClientSize.Width - yellowGhost.Bounds.Width;
             }
 
+            if (blueGhost.Right > ClientSize.Width)
+            {
+                blueGhost.Left = 0;
+            }
+
+
+            if (blueGhost.Right <= 0)
+            {
+                blueGhost.Left = ClientSize.Width - blueGhost.Bounds.Width;
+            }
+
 
 
             //PUNTAJE
 
-            label1.Text = "Score: " + score;
+            // label1.Text = "Score: " + score;
 
 
             //CONTROL PACMAN
 
-            if(goleft)
+            colisionpac.Left = pacman.Left - 10;
+            colisionpac.Top = pacman.Top - 10;
+
+            if (goleft || goup || godown || goright)
+            {
+                parado = false;
+
+            }
+
+            if (goleft)
             {
                 pacman.Left -= speed;
             }
@@ -215,10 +285,53 @@ namespace WindowsFormsApp2
                 pacman.Top += speed;
             }
 
+            foreach (Control x in Controls)
+                if (x is PictureBox)
+                {
+                    if (pacman.Bounds.IntersectsWith(x.Bounds)
+                        && (x.Tag == "wallhor" || x.Tag == "wallvert") && !parado)
+                    {
+                        parado = true;
+                        if (goright && pacman.Right >= (x.Left))
+                        {
+                            pacman.Left = x.Left - pacman.Width;
+                            goright = false;
+                        }
+
+                        if (goleft && pacman.Left <= (x.Right))
+                        {
+                            pacman.Left = x.Left + pacman.Width;
+                            goleft = false;
+                        }
+
+                        if (goup && pacman.Top <= x.Bottom)
+                        {
+                            pacman.Top = x.Top + pacman.Height;
+                        }
+
+                        if (godown && pacman.Bottom >= x.Top)
+                        {
+                            pacman.Top = x.Top - pacman.Height;
+                        }
+
+
+
+
+
+
+
+                    }
+                }
+
+            //Moneda Grande
+
+
+
             redGhost.Left += ghost1;
             yellowGhost.Left += ghost2;
+            blueGhost.Left += ghost2;
 
-            if(redGhost.Bounds.IntersectsWith(pictureBox1.Bounds) || 
+            if (redGhost.Bounds.IntersectsWith(pictureBox1.Bounds) ||
                 redGhost.Bounds.IntersectsWith(pictureBox4.Bounds) ||
                 redGhost.Bounds.IntersectsWith(pictureBox5.Bounds) ||
                 redGhost.Bounds.IntersectsWith(pictureBox6.Bounds)
@@ -230,7 +343,11 @@ namespace WindowsFormsApp2
             if (yellowGhost.Bounds.IntersectsWith(pictureBox1.Bounds) ||
                 yellowGhost.Bounds.IntersectsWith(pictureBox4.Bounds) ||
                 yellowGhost.Bounds.IntersectsWith(pictureBox5.Bounds) ||
-                yellowGhost.Bounds.IntersectsWith(pictureBox6.Bounds)
+                yellowGhost.Bounds.IntersectsWith(pictureBox6.Bounds) ||
+                blueGhost.Bounds.IntersectsWith(pictureBox1.Bounds) ||
+                blueGhost.Bounds.IntersectsWith(pictureBox4.Bounds) ||
+                blueGhost.Bounds.IntersectsWith(pictureBox5.Bounds) ||
+                blueGhost.Bounds.IntersectsWith(pictureBox6.Bounds)
                 )
             {
                 ghost2 = -ghost2;
@@ -238,76 +355,112 @@ namespace WindowsFormsApp2
 
             foreach (Control x in this.Controls)
             {
-                //MUERTE POR FANTASMA
-                
-                if(x is PictureBox && x.Tag == "ghost")
-                {
-                   if (((PictureBox)x).Bounds.IntersectsWith(pacman.Bounds))
+                //MUERTE POR FANTASMA O COMER SI ESTA AZUL
+
+
+            
+                    if (x.Bounds.IntersectsWith(pacman.Bounds) && x.Tag == "ghost")
                         {
-                        pacman.Left = 0;
-                        pacman.Top = 25;
-                        label2.Text = "Game Over";
-                        label2.Visible = true;
-                        timer1.Stop();
-                        lives--;
+                    
+                        PictureBox p = x as PictureBox;
+                        if (!azul && p.Image!=WindowsFormsApp2.Properties.Resources.ojos)
+                        {
+                            /*
+                            pacman.Left = 0;
+                            pacman.Top = 25;
+                            label2.Text = "Game Over";
+                            label2.Visible = true;
+                            timer1.Stop(); */
+                        }
+                        else
+                        {
+                            PictureBox y = x as PictureBox;
+                        
+                            if (!(y.Image.Equals(WindowsFormsApp2.Properties.Resources.ojos)))
+                            {
+                                y.Image = WindowsFormsApp2.Properties.Resources.ojos;
+                                combo++;
+                                score += 100 * combo;
+                               
+
+                            
+                            }
+                        }
                     }
                     
-                 
-                  
-                }
+
+
                 
 
-                //Vidas
+                //Recogida Monedas
 
-                label3.Text = "Vidas: " + lives;
-                
-                //Puntaje
-
-
-                if (x is PictureBox && x.Tag =="coin")
+                if (x is PictureBox && x.Tag == "coin")
                 {
                     if (((PictureBox)x).Bounds.IntersectsWith(pacman.Bounds))
                     {
                         this.Controls.Remove(x);
-                        score = score + 10 ;
+                        score++;
 
                     }
 
                 }
-                
+
+                //CHEQUEAR POWERPELLET
+                if (x is PictureBox && x.Tag == "monGrande")
+                {
+                    if (((PictureBox)x).Bounds.IntersectsWith(pacman.Bounds))
+                    {
+                        this.Controls.Remove(x);
+                        score++;
+                        azul = true;
+
+                        foreach (Control c in Controls)
+                        {
+                            if (c is PictureBox)
+                            {
+
+
+                                PictureBox o = c as PictureBox;
+                                if (c.Tag == "ghost")
+                                {
+
+                                    o.Image = WindowsFormsApp2.Properties.Resources.fantasma;
+                                }
+                            }
+                        }
+
+
+                    }
+
+                }
+
+
+
+
             }
-            
+
             pinkGhost.Left += ghost3x;
             pinkGhost.Top += ghost3y;
 
-            if(pinkGhost.Left<1 ||
-                pinkGhost.Left + pinkGhost.Width > ClientSize.Width -2 ||
+            if (pinkGhost.Left < 1 ||
+                pinkGhost.Left + pinkGhost.Width > ClientSize.Width - 2 ||
                 pinkGhost.Bounds.IntersectsWith(pictureBox1.Bounds) ||
                 pinkGhost.Bounds.IntersectsWith(pictureBox4.Bounds) ||
                 pinkGhost.Bounds.IntersectsWith(pictureBox5.Bounds) ||
-                pinkGhost.Bounds.IntersectsWith(pictureBox6.Bounds) 
+                pinkGhost.Bounds.IntersectsWith(pictureBox6.Bounds)
                 )
             {
                 ghost3x = -ghost3x;
             }
 
-            if(pinkGhost.Top < 1 ||
-                pinkGhost.Top +pinkGhost.Height > ClientSize.Height -2
+            if (pinkGhost.Top < 1 ||
+                pinkGhost.Top + pinkGhost.Height > ClientSize.Height - 2
                 )
             {
-                ghost3y = -ghost3y;
+                ghost3x = -ghost3x;
             }
         }
 
-        private void nuevoJuegoToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            
-            // Método para resetear el juego, **** Falta hacerlo bien *****
-        }
-        //Método para salir del juego.
-        private void salirToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
-        }
+
     }
 }

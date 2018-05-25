@@ -103,9 +103,59 @@ namespace WindowsFormsApp2.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap ezgif_5_55e31f897e {
+            get {
+                object obj = ResourceManager.GetObject("ezgif-5-55e31f897e", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap fantasma {
+            get {
+                object obj = ResourceManager.GetObject("fantasma", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Left {
             get {
                 object obj = ResourceManager.GetObject("Left", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ojos {
+            get {
+                object obj = ResourceManager.GetObject("ojos", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Pacman_light_blue_inky_sh_600x600 {
+            get {
+                object obj = ResourceManager.GetObject("Pacman-light-blue-inky.sh-600x600", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap pacmananim {
+            get {
+                object obj = ResourceManager.GetObject("pacmananim", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -136,6 +186,26 @@ namespace WindowsFormsApp2.Properties {
         internal static System.Drawing.Bitmap Right {
             get {
                 object obj = ResourceManager.GetObject("Right", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap startButton {
+            get {
+                object obj = ResourceManager.GetObject("startButton", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap titulo {
+            get {
+                object obj = ResourceManager.GetObject("titulo", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
