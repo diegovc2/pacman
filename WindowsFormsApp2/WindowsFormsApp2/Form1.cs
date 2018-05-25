@@ -21,6 +21,9 @@ namespace WindowsFormsApp2
             label2.Visible = false;
             labelnivel.Text = nivel.ToString();
             labelvida.Text = vidas.ToString();
+   
+
+
         }
         
         int timer = 0;
@@ -30,6 +33,9 @@ namespace WindowsFormsApp2
         bool goright;
         private bool parado;
         int speed = 5;
+
+        int timerfruta = 0;
+        int intervalofruta = 1000;
 
         int ghost1 = 7;
         int ghost2 = 8;
@@ -44,12 +50,14 @@ namespace WindowsFormsApp2
         private int combo;
         private bool ojos=true;
         private int timerojos;
+        
 
         private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
             if(timer1.Enabled==false && vidas>0)
             {
                 timer1.Enabled = true;
+                
                 labelready.Visible = false;
             }
 
@@ -122,8 +130,14 @@ namespace WindowsFormsApp2
 
         private async void timer1_TickAsync(object sender, EventArgs e)
         {
+            timerfruta++;
 
+            if(numfrutas<2)
+            {
+                if(timerfruta==intervalofruta)
+                {
 
+                }
             //LEYES FANTASMAS AZULES
             if (azul)
             {
