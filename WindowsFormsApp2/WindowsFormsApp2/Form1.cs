@@ -19,7 +19,7 @@ namespace WindowsFormsApp2
             InitializeComponent();
             label2.Visible = false;
         }
-        int prueba = 0;
+        
         int timer = 0;
         bool goup;
         bool godown;
@@ -259,7 +259,7 @@ namespace WindowsFormsApp2
 
             //PUNTAJE
 
-            // label1.Text = "Score: " + score;
+             label1.Text = "Score: " + score;
 
 
             //CONTROL PACMAN
@@ -469,6 +469,16 @@ namespace WindowsFormsApp2
             }
         }
 
+        private void volverAlMenuPrincipalToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Application.Restart();
+        }
 
+        private void salirDelJuegoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+       
     }
 }
