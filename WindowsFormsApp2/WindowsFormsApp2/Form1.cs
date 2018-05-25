@@ -12,13 +12,17 @@ namespace WindowsFormsApp2
 {
     public partial class Form1 : Form
     {
-
+        int vidas = Form2.vidas;
+        int nivel = Form2.nivel;
 
         public Form1()
         {
             InitializeComponent();
             label2.Visible = false;
+            labelnivel.Text = nivel.ToString();
+            labelvida.Text = vidas.ToString();
         }
+        
         int timer = 0;
         bool goup;
         bool godown;
@@ -38,9 +42,11 @@ namespace WindowsFormsApp2
         private int combo;
         private bool ojos=true;
         
+        
+        
         private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
-            if(timer1.Enabled==false)
+            if(timer1.Enabled==false && vidas>0)
             {
                 timer1.Enabled = true;
                 labelready.Visible = false;
@@ -188,7 +194,7 @@ namespace WindowsFormsApp2
                 pacman.Left = panel1.Width - pacman.Bounds.Width;
             }
 
-            if (pacman.Bottom < panel1.Top)
+            if (pacman.Top < panel1.Top)
             {
                 pacman.Top = panel1.Height - pacman.Height;
             }
@@ -372,13 +378,30 @@ namespace WindowsFormsApp2
                         PictureBox p = x as PictureBox;
                         if (!azul && p.Image!=WindowsFormsApp2.Properties.Resources.ojos)
                         {
-                            
-                            pacman.Left = 0;
-                            pacman.Top = 25;
-                            labelready.Text = "Game Over";
+                        
+                        {
+                            vidas--;
+                            if (vidas > 0)
+                            {
+                                labelready.Text = "PERDISTE 1 VIDA";
+
+                            }
+                            else
+                            {
+                                labelready.Text = "GAME OVER";
+
+                            }
+                            labelvida.Text = vidas.ToString();
                             labelready.Visible = true;
-                            timer1.Stop(); 
+
+                            pacman.Top = ClientSize.Height / 2;
+                            pacman.Left = ClientSize.Width / 2;
+                            timer1.Stop();
                         }
+                       
+                        
+
+                    }
                         else
                         {
                             PictureBox y = x as PictureBox;

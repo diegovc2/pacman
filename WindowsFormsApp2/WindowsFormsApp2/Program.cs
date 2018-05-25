@@ -20,8 +20,10 @@ namespace WindowsFormsApp2
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             OpenDetailFormOnClose = false;
+            
+            //Al final cambiar por Form2
 
-            Application.Run(new Form2());
+            Application.Run(new Form1());
 
             if (OpenDetailFormOnClose)
             {
