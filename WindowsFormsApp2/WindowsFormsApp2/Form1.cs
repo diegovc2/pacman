@@ -11,8 +11,8 @@ using System.Windows.Forms;
 namespace WindowsFormsApp2
 {
     public partial class Form1 : Form
-    {
-        int vidas = Form2.vidas;
+    {   //CAMBIAR A FORM.VIDAS
+        int vidas = 2;
         int nivel = Form2.nivel;
 
         public Form1()
@@ -37,13 +37,14 @@ namespace WindowsFormsApp2
         int ghost3x = 8;
         int ghost3y = 8;
 
+        int numfrutas = 0;
+
         int score = 0;
         private bool azul;
         private int combo;
         private bool ojos=true;
-        
-        
-        
+        private int timerojos;
+
         private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
             if(timer1.Enabled==false && vidas>0)
@@ -122,13 +123,11 @@ namespace WindowsFormsApp2
         private async void timer1_TickAsync(object sender, EventArgs e)
         {
 
-            
 
             //LEYES FANTASMAS AZULES
             if (azul)
             {
                 timer++;
-                label1.Text = timer.ToString();
                 if (timer == 100)
                 {
                     foreach (Control c in Controls)
@@ -264,7 +263,7 @@ namespace WindowsFormsApp2
 
             //PUNTAJE
 
-            // label1.Text = "Score: " + score;
+             label1.Text = "Score: " + score;
 
 
             //CONTROL PACMAN
@@ -406,16 +405,18 @@ namespace WindowsFormsApp2
                         {
                             PictureBox y = x as PictureBox;
                         
-                            if (!(y.Image.Equals(WindowsFormsApp2.Properties.Resources.ojos)))
+                            if (!(y.Image.Equals(WindowsFormsApp2.Properties.Resources.ojos))  )
                             {
                                 y.Image = WindowsFormsApp2.Properties.Resources.ojos;
                                 combo++;
-                                score += 100 * combo;
-                               
-
+                            score += 100;
                             
-                            }
+
+
+
+
                         }
+                    }
                     }
                     
 
