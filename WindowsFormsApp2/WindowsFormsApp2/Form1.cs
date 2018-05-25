@@ -91,7 +91,7 @@ namespace WindowsFormsApp2
                 pacman.Image = Properties.Resources.down;
             }
         }
-        //asd
+
 
 
         /* private void Form1_KeyUp(object sender, KeyEventArgs e)
