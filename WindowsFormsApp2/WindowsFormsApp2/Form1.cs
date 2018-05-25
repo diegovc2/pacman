@@ -36,6 +36,8 @@ namespace WindowsFormsApp2
 
         int score = 0;
         private bool azul;
+        private int combo;
+        private bool ojos=true;
 
         private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
@@ -107,7 +109,7 @@ namespace WindowsFormsApp2
 
 
 
-        private void timer1_Tick(object sender, EventArgs e)
+        private async void timer1_TickAsync(object sender, EventArgs e)
         {
             //LEYES FANTASMAS AZULES
             if (azul)
@@ -156,6 +158,7 @@ namespace WindowsFormsApp2
 
                     }
                     timer = 0;
+                    combo = 0;
                     azul = false;
                 }
 
@@ -352,23 +355,42 @@ namespace WindowsFormsApp2
 
             foreach (Control x in this.Controls)
             {
-                //MUERTE POR FANTASMA
+                //MUERTE POR FANTASMA O COMER SI ESTA AZUL
 
 
-                if (x is PictureBox && x.Tag == "ghost")
-                {
-                    /*if (((PictureBox)x).Bounds.IntersectsWith(pacman.Bounds))
+            
+                    if (x.Bounds.IntersectsWith(pacman.Bounds) && x.Tag == "ghost")
                         {
-                        pacman.Left = 0;
-                        pacman.Top = 25;
-                        label2.Text = "Game Over";
-                        label2.Visible = true;
-                        timer1.Stop();
+                    
+                        PictureBox p = x as PictureBox;
+                        if (!azul && p.Image!=WindowsFormsApp2.Properties.Resources.ojos)
+                        {
+                            /*
+                            pacman.Left = 0;
+                            pacman.Top = 25;
+                            label2.Text = "Game Over";
+                            label2.Visible = true;
+                            timer1.Stop(); */
+                        }
+                        else
+                        {
+                            PictureBox y = x as PictureBox;
+                        
+                            if (!(y.Image.Equals(WindowsFormsApp2.Properties.Resources.ojos)))
+                            {
+                                y.Image = WindowsFormsApp2.Properties.Resources.ojos;
+                                combo++;
+                                score += 100 * combo;
+                               
+
+                            
+                            }
+                        }
                     }
-                    */
+                    
 
 
-                }
+                
 
                 //Recogida Monedas
 
