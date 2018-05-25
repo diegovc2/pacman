@@ -38,9 +38,14 @@ namespace WindowsFormsApp2
         private bool azul;
         private int combo;
         private bool ojos=true;
-
+        
         private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
+            if(timer1.Enabled==false)
+            {
+                timer1.Enabled = true;
+                labelready.Visible = false;
+            }
 
             if (e.KeyCode == Keys.Left)
             {
@@ -111,6 +116,9 @@ namespace WindowsFormsApp2
 
         private async void timer1_TickAsync(object sender, EventArgs e)
         {
+
+            
+
             //LEYES FANTASMAS AZULES
             if (azul)
             {
@@ -170,7 +178,7 @@ namespace WindowsFormsApp2
 
             //Para reaparecer por los bordes
 
-            if (pacman.Right > ClientSize.Width)
+            if (pacman.Right > panel1.Width)
             {
                 pacman.Left = 0;
             }
@@ -178,30 +186,30 @@ namespace WindowsFormsApp2
 
             if (pacman.Right <= 0)
             {
-                pacman.Left = ClientSize.Width - pacman.Bounds.Width;
+                pacman.Left = panel1.Width - pacman.Bounds.Width;
             }
 
-            if (pacman.Bottom < 0)
+            if (pacman.Bottom < panel1.Top)
             {
-                pacman.Top = ClientSize.Height - pacman.Height;
+                pacman.Top = panel1.Height - pacman.Height;
             }
 
-            if (pacman.Top > ClientSize.Height)
+            if (pacman.Top > panel1.Height)
             {
                 pacman.Top = 0;
             }
 
             if (pinkGhost.Bottom < 0)
             {
-                pinkGhost.Top = ClientSize.Height - pinkGhost.Height;
+                pinkGhost.Top = panel1.Height - pinkGhost.Height;
             }
 
-            if (pinkGhost.Top > ClientSize.Height)
+            if (pinkGhost.Top > panel1.Height)
             {
                 pinkGhost.Top = 0;
             }
 
-            if (pinkGhost.Right > ClientSize.Width)
+            if (pinkGhost.Right > panel1.Width)
             {
                 pinkGhost.Left = 0;
             }
@@ -209,11 +217,11 @@ namespace WindowsFormsApp2
 
             if (pinkGhost.Right <= 0)
             {
-                pinkGhost.Left = ClientSize.Width - pinkGhost.Bounds.Width;
+                pinkGhost.Left = panel1.Width - pinkGhost.Bounds.Width;
             }
 
 
-            if (redGhost.Right > ClientSize.Width)
+            if (redGhost.Right > panel1.Width)
             {
                 redGhost.Left = 0;
             }
@@ -221,11 +229,11 @@ namespace WindowsFormsApp2
 
             if (redGhost.Right <= 0)
             {
-                redGhost.Left = ClientSize.Width - redGhost.Bounds.Width;
+                redGhost.Left = panel1.Width - redGhost.Bounds.Width;
             }
 
 
-            if (yellowGhost.Right > ClientSize.Width)
+            if (yellowGhost.Right > panel1.Width)
             {
                 yellowGhost.Left = 0;
             }
@@ -233,10 +241,10 @@ namespace WindowsFormsApp2
 
             if (yellowGhost.Right <= 0)
             {
-                yellowGhost.Left = ClientSize.Width - yellowGhost.Bounds.Width;
+                yellowGhost.Left = panel1.Width - yellowGhost.Bounds.Width;
             }
 
-            if (blueGhost.Right > ClientSize.Width)
+            if (blueGhost.Right > panel1.Width)
             {
                 blueGhost.Left = 0;
             }
@@ -244,7 +252,7 @@ namespace WindowsFormsApp2
 
             if (blueGhost.Right <= 0)
             {
-                blueGhost.Left = ClientSize.Width - blueGhost.Bounds.Width;
+                blueGhost.Left = panel1.Width - blueGhost.Bounds.Width;
             }
 
 
@@ -365,12 +373,12 @@ namespace WindowsFormsApp2
                         PictureBox p = x as PictureBox;
                         if (!azul && p.Image!=WindowsFormsApp2.Properties.Resources.ojos)
                         {
-                            /*
+                            
                             pacman.Left = 0;
                             pacman.Top = 25;
-                            label2.Text = "Game Over";
-                            label2.Visible = true;
-                            timer1.Stop(); */
+                            labelready.Text = "Game Over";
+                            labelready.Visible = true;
+                            timer1.Stop(); 
                         }
                         else
                         {
@@ -443,7 +451,7 @@ namespace WindowsFormsApp2
             pinkGhost.Top += ghost3y;
 
             if (pinkGhost.Left < 1 ||
-                pinkGhost.Left + pinkGhost.Width > ClientSize.Width - 2 ||
+                pinkGhost.Left + pinkGhost.Width > panel1.Width - 2 ||
                 pinkGhost.Bounds.IntersectsWith(pictureBox1.Bounds) ||
                 pinkGhost.Bounds.IntersectsWith(pictureBox4.Bounds) ||
                 pinkGhost.Bounds.IntersectsWith(pictureBox5.Bounds) ||
@@ -454,7 +462,7 @@ namespace WindowsFormsApp2
             }
 
             if (pinkGhost.Top < 1 ||
-                pinkGhost.Top + pinkGhost.Height > ClientSize.Height - 2
+                pinkGhost.Top + pinkGhost.Height > panel1.Height - 2
                 )
             {
                 ghost3x = -ghost3x;

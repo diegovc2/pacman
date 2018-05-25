@@ -81,6 +81,10 @@
             this.pacman = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.colisionpac = new System.Windows.Forms.PictureBox();
+            this.labelready = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.blueGhost)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox43)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox42)).BeginInit();
@@ -154,7 +158,6 @@
             // 
             // timer1
             // 
-            this.timer1.Enabled = true;
             this.timer1.Interval = 20;
             this.timer1.Tick += new System.EventHandler(this.timer1_TickAsync);
             // 
@@ -686,11 +689,51 @@
             this.colisionpac.TabIndex = 47;
             this.colisionpac.TabStop = false;
             // 
+            // labelready
+            // 
+            this.labelready.AutoSize = true;
+            this.labelready.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelready.Location = new System.Drawing.Point(218, 257);
+            this.labelready.Name = "labelready";
+            this.labelready.Size = new System.Drawing.Size(140, 39);
+            this.labelready.TabIndex = 51;
+            this.labelready.Text = "READY";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(12, 7);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(85, 25);
+            this.label3.TabIndex = 52;
+            this.label3.Text = "VIDAS:";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(161, 7);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(81, 25);
+            this.label4.TabIndex = 53;
+            this.label4.Text = "NIVEL:";
+            // 
+            // panel1
+            // 
+            this.panel1.Location = new System.Drawing.Point(-1, 48);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(607, 475);
+            this.panel1.TabIndex = 54;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(607, 523);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.labelready);
             this.Controls.Add(this.blueGhost);
             this.Controls.Add(this.pictureBox43);
             this.Controls.Add(this.pictureBox42);
@@ -742,6 +785,7 @@
             this.Controls.Add(this.pacman);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.colisionpac);
+            this.Controls.Add(this.panel1);
             this.Name = "Form1";
             this.Text = "Form1";
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
@@ -853,6 +897,10 @@
         private System.Windows.Forms.PictureBox pictureBox42;
         private System.Windows.Forms.PictureBox pictureBox43;
         private System.Windows.Forms.PictureBox blueGhost;
+        private System.Windows.Forms.Label labelready;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Panel panel1;
     }
 }
 
