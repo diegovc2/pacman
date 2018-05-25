@@ -28,7 +28,7 @@ namespace WindowsFormsApp2
         private bool parado;
         int speed = 5;
 
-        int ghost1 = 6;
+        int ghost1 = 7;
         int ghost2 = 8;
 
         int ghost3x = 8;
@@ -364,8 +364,8 @@ namespace WindowsFormsApp2
             foreach (Control x in this.Controls)
             {
                 //MUERTE POR FANTASMA O COMER SI ESTA AZUL
-
-
+             
+               
             
                     if (x.Bounds.IntersectsWith(pacman.Bounds) && x.Tag == "ghost")
                         {
