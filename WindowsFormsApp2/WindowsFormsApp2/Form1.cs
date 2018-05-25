@@ -19,7 +19,7 @@ namespace WindowsFormsApp2
             InitializeComponent();
             label2.Visible = false;
         }
-
+        int prueba = 0;
         int timer = 0;
         bool goup;
         bool godown;
