@@ -70,7 +70,7 @@
             this.label2.ForeColor = System.Drawing.SystemColors.Control;
             this.label2.Location = new System.Drawing.Point(12, 368);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(117, 39);
+            this.label2.Size = new System.Drawing.Size(111, 38);
             this.label2.TabIndex = 3;
             this.label2.Text = "NIVEL";
             // 
@@ -102,7 +102,7 @@
             this.label3.ForeColor = System.Drawing.SystemColors.Control;
             this.label3.Location = new System.Drawing.Point(264, 368);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(121, 39);
+            this.label3.Size = new System.Drawing.Size(115, 38);
             this.label3.TabIndex = 5;
             this.label3.Text = "VIDAS";
             // 
@@ -115,7 +115,7 @@
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox3.TabIndex = 7;
             this.pictureBox3.TabStop = false;
-            this.pictureBox3.Click += new System.EventHandler(this.pictureBox3_Click);
+            this.pictureBox3.Click += new System.EventHandler(this.Foo);
             // 
             // Form2
             // 

@@ -23,11 +23,24 @@ namespace WindowsFormsApp2
 
         private void pictureBox3_Click(object sender, EventArgs e)
         {
+            /* vidas = trackBar1.Value;
+             nivel = trackBar2.Value;
+             Form1 juego = new Form1();
+             juego.Show();
+             this.Close();*/
+        }
+
+        private void Foo(object sender, EventArgs e)
+        {
+
             vidas = trackBar1.Value;
             nivel = trackBar2.Value;
-            Form1 juego = new Form1();
-            juego.Show();
-            this.Dispose();
+            Program.OpenDetailFormOnClose = true;
+
+            this.Close();
         }
     }
+
 }
+
+
